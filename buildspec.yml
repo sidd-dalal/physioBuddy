@@ -2,8 +2,9 @@ version: 0.2
 env:
   secrets-manager:
     FIREBASE_SERVICE_ACCOUNT: "arn:aws:secretsmanager:us-east-1:346518713419:secret:fire-name-eVkQBl::"
+
 phases:
-    install:
+  install:
     runtime-versions:
       nodejs: 20
     commands:
@@ -15,14 +16,20 @@ phases:
       - export GOOGLE_APPLICATION_CREDENTIALS=/root/serviceAccount.json
       - echo "GOOGLE_APPLICATION_CREDENTIALS: $GOOGLE_APPLICATION_CREDENTIALS"
       - cat /root/serviceAccount.json
+
   pre_build:
     commands:
+      - echo "STEP 2: Pre-build"
       - cd physio-prescriptions-v2
       - npm install
+
   build:
     commands:
+      - echo "STEP 3: Build"
       - npm run build
+
   post_build:
     commands:
+      - echo "STEP 4: Deploy"
       - cd ..
       - firebase deploy --only hosting
