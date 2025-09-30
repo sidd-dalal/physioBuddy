@@ -14,14 +14,13 @@ phases:
       - echo "$FIREBASE_SERVICE_ACCOUNT" > /root/firebase-key.json
       - export GOOGLE_APPLICATION_CREDENTIALS=/root/firebase-key.json
       - export PROJECT_ID=physioprescription-98af8
-      - echo "GOOGLE_APPLICATION_CREDENTIALS is set"
+      - echo "GOOGLE_APPLICATION_CREDENTIALS is set to $GOOGLE_APPLICATION_CREDENTIALS"
 
   pre_build:
     commands:
       - echo "== Pre-build phase =="
-      - cat /root/firebase-key.json | head -n 20
-      - gcloud auth activate-service-account --key-file=/root/firebase-key.json
-      - gcloud config set project $PROJECT_ID
+      - echo "Service account file first 5 lines (for debugging):"
+      - head -n 5 /root/firebase-key.json
       - cd physio-prescriptions-v2
       - npm install
 
@@ -34,4 +33,4 @@ phases:
     commands:
       - echo "== Deploying to Firebase Hosting =="
       - cd ..
-      - npx firebase deploy --only hosting --project $PROJECT_ID --non-interactive
+      - firebase deploy --only hosting --project $PROJECT_ID --non-interactive
