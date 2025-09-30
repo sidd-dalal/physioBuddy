@@ -15,8 +15,9 @@ phases:
       - npm install -g firebase-tools
       - echo "$FIREBASE_SERVICE_ACCOUNT" > /root/firebase-key.json
       - export GOOGLE_APPLICATION_CREDENTIALS=/root/firebase-key.json
+      - export PROJECT_ID=physioprescription-98af8
       - echo "GOOGLE_APPLICATION_CREDENTIALS is set to $GOOGLE_APPLICATION_CREDENTIALS"
-      - cat /root/firebase-key.json | head -n 5   # just first 5 lines for debugging
+      - cat /root/firebase-key.json | head -n 5
 
   pre_build:
     commands:
@@ -32,5 +33,6 @@ phases:
   post_build:
     commands:
       - echo "== Post-build phase =="
-      - firebase deploy --only hosting
+      - cd ..
+      - firebase deploy --only hosting --project "$PROJECT_ID" --non-interactive
       - echo "Build finished. Firebase key available at $GOOGLE_APPLICATION_CREDENTIALS"
