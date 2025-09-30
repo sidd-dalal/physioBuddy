@@ -1,9 +1,6 @@
 version: 0.2
 
 env:
-  variables:
-    GOOGLE_APPLICATION_CREDENTIALS: "/root/firebase-key.json"
-    PROJECT_ID: "physioprescription-98af8"
   secrets-manager:
     FIREBASE_SERVICE_ACCOUNT: "arn:aws:secretsmanager:us-east-2:346518713419:secret:firebase-service-account-LmTAnc"
 
@@ -15,11 +12,13 @@ phases:
       - echo "== Install phase =="
       - npm install -g firebase-tools
       - echo "$FIREBASE_SERVICE_ACCOUNT" > /root/firebase-key.json
-      - echo "Service account file created at $GOOGLE_APPLICATION_CREDENTIALS"
+      - echo "Service account file created"
 
   pre_build:
     commands:
       - echo "== Pre-build phase =="
+      - export GOOGLE_APPLICATION_CREDENTIALS=/root/firebase-key.json
+      - export PROJECT_ID=physioprescription-98af8
       - echo "Service account file first 5 lines (for debugging):"
       - head -n 5 /root/firebase-key.json
       - cd physio-prescriptions-v2
@@ -28,12 +27,15 @@ phases:
   build:
     commands:
       - echo "== Build phase =="
+      - export GOOGLE_APPLICATION_CREDENTIALS=/root/firebase-key.json
+      - export PROJECT_ID=physioprescription-98af8
       - npm run build
 
   post_build:
     commands:
       - echo "== Deploying to Firebase Hosting =="
+      - export GOOGLE_APPLICATION_CREDENTIALS=/root/firebase-key.json
+      - export PROJECT_ID=physioprescription-98af8
       - echo "GOOGLE_APPLICATION_CREDENTIALS: $GOOGLE_APPLICATION_CREDENTIALS"
-      - echo "PROJECT_ID: $PROJECT_ID"
       - cd ..
       - firebase deploy --only hosting --project $PROJECT_ID --non-interactive
