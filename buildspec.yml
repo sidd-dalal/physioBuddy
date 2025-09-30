@@ -10,7 +10,6 @@ phases:
       - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
       - apt-get install -y nodejs
       - npm install -g firebase-tools
-      # Save your secret as a JSON file that Firebase CLI expects:
       - echo "$FIREBASE_SERVICE_ACCOUNT" > /root/serviceAccount.json
       - export GOOGLE_APPLICATION_CREDENTIALS=/root/serviceAccount.json
       - echo "GOOGLE_APPLICATION_CREDENTIALS: $GOOGLE_APPLICATION_CREDENTIALS"
