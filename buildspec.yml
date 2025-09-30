@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   secrets-manager:
-    FIREBASE_SERVICE_ACCOUNT: "arn:aws:secretsmanager:us-east-1:346518713419:secret:fire-name-eVkQBl::"
+    FIREBASE_SERVICE_ACCOUNT: "arn:aws:secretsmanager:us-east-1:346518713419:secret:fire-name::"
 
 phases:
   install:
@@ -11,6 +11,5 @@ phases:
     commands:
       - echo "STEP 1: Install phase"
       - echo "Secret length: ${#FIREBASE_SERVICE_ACCOUNT}"
-  build:
-    commands:
-      - echo "STEP 2: Build phase"
+      - echo "$FIREBASE_SERVICE_ACCOUNT" > firebase-key.json
+      - echo "Saved secret to firebase-key.json"
