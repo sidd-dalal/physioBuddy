@@ -9,7 +9,26 @@ phases:
     runtime-versions:
       nodejs: 20
     commands:
-      - echo "STEP 1: Install phase"
-      - echo "Secret length: ${#FIREBASE_SERVICE_ACCOUNT}"
-      - echo "$FIREBASE_SERVICE_ACCOUNT" > firebase-key.json
-      - echo "Saved secret to firebase-key.json"
+      - echo "== Install phase =="
+      - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+      - apt-get install -y nodejs
+      - echo "$FIREBASE_SERVICE_ACCOUNT" > /root/firebase-key.json
+      - export GOOGLE_APPLICATION_CREDENTIALS=/root/firebase-key.json
+      - echo "GOOGLE_APPLICATION_CREDENTIALS is set to $GOOGLE_APPLICATION_CREDENTIALS"
+      - cat /root/firebase-key.json | head -n 5   # just first 5 lines for debugging
+
+  pre_build:
+    commands:
+      - echo "== Pre-build phase =="
+      - cd physio-prescriptions-v2
+      - npm install
+
+  build:
+    commands:
+      - echo "== Build phase =="
+      - npm run build
+
+  post_build:
+    commands:
+      - echo "== Post-build phase =="
+      - echo "Build finished. Firebase key available at $GOOGLE_APPLICATION_CREDENTIALS"
