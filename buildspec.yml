@@ -1,43 +1,27 @@
+
 version: 0.2
 env:
   secrets-manager:
-    FIREBASE_SERVICE_ACCOUNT: "arn:aws:secretsmanager:us-east-1:346518713419:secret:firebaseServiceAccount-key-xvHPza"
+    FIREBASE_TOKEN: "arn:aws:secretsmanager:us-east-1:346518713419:secret:firebaseServiceAccount-key-xvHPza"
 phases:
   install:
     runtime-versions:
       nodejs: 20
     commands:
-      - echo "Installing Firebase CLI..."
+      - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+      - apt-get install -y nodejs
       - npm install -g firebase-tools
-      - echo "Writing out Firebase service account JSON..."
-      - printf "%s" "$FIREBASE_SERVICE_ACCOUNT" > /root/serviceAccount.json
-      - echo "Setting GOOGLE_APPLICATION_CREDENTIALS environment variable..."
+      # Save your secret as a JSON file that Firebase CLI expects:
+      - echo $FIREBASE_SERVICE_ACCOUNT > /root/serviceAccount.json
       - export GOOGLE_APPLICATION_CREDENTIALS=/root/serviceAccount.json
-      - echo "Node version:"
-      - node -v
-      - echo "NPM version:"
-      - npm -v
-      - echo "Print contents of serviceAccount.json:"
-      - cat /root/serviceAccount.json
-      - echo "Validate JSON formatting (if jq installed, otherwise just skip):"
-      - jq . < /root/serviceAccount.json || echo "jq not installed, skipping format validation."
-      - echo "GOOGLE_APPLICATION_CREDENTIALS: $GOOGLE_APPLICATION_CREDENTIALS"
   pre_build:
     commands:
-      - echo "Moving to physio-prescriptions-v2 folder & installing dependencies"
       - cd physio-prescriptions-v2
       - npm install
   build:
     commands:
-      - echo "Running Vite build"
       - npm run build
   post_build:
     commands:
-      - echo "Returning to repository root"
       - cd ..
-      - echo "Deploying to Firebase Hosting using service account credentials"
       - firebase deploy --only hosting
-
-artifacts:
-  files:
-    - '**/*'
