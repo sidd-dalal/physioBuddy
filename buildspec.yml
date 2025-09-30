@@ -1,0 +1,21 @@
+version: 0.2
+env:
+  secrets-manager:
+    FIREBASE_TOKEN: "arn:aws:secretsmanager:us-east-2:346518713419:secret:firebase-token-NYWaOo"
+phases:
+  install:
+    commands:
+      - curl -sL https://deb.nodesource.com/setup_16.x | bash -
+      - apt-get install -y nodejs
+      - npm install -g firebase-tools
+  pre_build:
+    commands:
+      - cd physio-prescriptions-v2
+      - npm install
+  build:
+    commands:
+      - npm run build
+  post_build:
+    commands:
+      - cd ..
+      - firebase deploy --only hosting --token "$FIREBASE_TOKEN"
