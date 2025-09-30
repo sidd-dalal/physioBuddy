@@ -4,6 +4,8 @@ env:
     FIREBASE_TOKEN: "arn:aws:secretsmanager:us-east-1:346518713419:secret:firebaseServiceAccount-key-xvHPza"
 phases:
   install:
+    runtime-versions:
+      nodejs: 20
     commands:
       - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
       - apt-get install -y nodejs
