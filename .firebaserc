@@ -1,0 +1,21 @@
+{
+  "projects": {
+    "default": "physioprescription-98af8"
+  },
+  "targets": {
+    "physioprescription-98af8": {
+      "hosting": {
+        "main-site": [
+          "main-site1"
+        ],
+        "prescriptions": [
+          "physioprescription-98af8"
+        ],
+        "physioconnect": [
+          "physioconnect"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

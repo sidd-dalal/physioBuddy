@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourPhysioBuddy - Online Physiotherapy Consultations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'medical-blue': '#0B6BA8',
+                        'medical-teal': '#2DD4BF',
+                        'medical-gray': '#F8FAFC',
+                        'medical-dark': '#1E293B',
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="font-inter bg-medical-gray min-h-screen">
+    <!-- @COMPONENT: Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-medical-blue text-white p-2 rounded-lg">
+                        <i class="fas fa-user-md text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-semibold text-medical-dark">YourPhysioBuddy</h1>
+                        <p class="text-sm text-gray-500">Online Consultations with Dr. Unnati Lodha</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- @FUNCTIONALITY: Connection status indicator -->
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="text-sm text-gray-600">Connected</span>
+                    </div>
+                    <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors duration-200" data-event="click:endSession">
+                        <i class="fas fa-sign-out-alt mr-2"></i>End Session
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: MainConsultationInterface -->
+    <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Session Info Banner -->
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-video text-medical-blue text-lg"></i>
+                    <div>
+                        <h2 class="font-semibold text-medical-dark">Active Session</h2>
+                        <p class="text-sm text-gray-600">Session ID: <span class="font-mono bg-white px-2 py-1 rounded" data-bind="session.id">PHY-2024-001</span></p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2 text-sm text-gray-600">
+                    <i class="fas fa-clock"></i>
+                    <span data-bind="session.duration">23:45</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Video Section -->
+            <div class="lg:col-span-2 space-y-4">
+                <!-- Doctor Video -->
+                <!-- @COMPONENT: DoctorVideoFeed -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-medical-blue text-white px-4 py-2 flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-user-md"></i>
+                            <span class="font-medium">Dr. Unnati Lodha</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                            <span class="text-sm">Online</span>
+                        </div>
+                    </div>
+                    <div class="relative aspect-video bg-gray-900">
+                        <!-- A professional medical consultation setup showing a doctor in a clean office environment -->
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=675" 
+                             alt="Doctor video feed" 
+                             class="w-full h-full object-cover" />
+                        
+                        <!-- Video Controls Overlay -->
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center space-x-3 bg-black bg-opacity-50 rounded-full px-4 py-2">
+                            <button class="text-white hover:text-medical-teal transition-colors" data-event="click:toggleMute" title="Mute/Unmute">
+                                <i class="fas fa-microphone text-lg"></i>
+                            </button>
+                            <button class="text-white hover:text-medical-teal transition-colors" data-event="click:toggleCamera" title="Camera On/Off">
+                                <i class="fas fa-video text-lg"></i>
+                            </button>
+                            <button class="text-white hover:text-medical-teal transition-colors" data-event="click:shareScreen" title="Share Screen">
+                                <i class="fas fa-desktop text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_COMPONENT: DoctorVideoFeed -->
+
+                <!-- Patient Video with Posture Analysis -->
+                <!-- @COMPONENT: PatientVideoFeed -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-medical-teal text-white px-4 py-2 flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-user"></i>
+                            <span class="font-medium" data-bind="patient.name">Patient - John Smith</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <span class="text-sm">Recording Posture</span>
+                            </div>
+                            <button class="text-white hover:text-yellow-300 transition-colors" data-event="click:togglePostureAnalysis" title="Toggle Posture Analysis">
+                                <i class="fas fa-running"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative aspect-video bg-gray-900">
+                        <!-- A person in a physiotherapy exercise position demonstrating good posture -->
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=675" 
+                             alt="Patient video feed with posture analysis" 
+                             class="w-full h-full object-cover" />
+                        
+                        <!-- @FUNCTIONALITY: Posture Analysis Overlay using MediaPipe Pose -->
+                        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1200 675" data-implementation="MediaPipe Pose skeleton overlay">
+                            <!-- Skeleton Points and Lines -->
+                            <g stroke="#2DD4BF" stroke-width="3" fill="#2DD4BF">
+                                <!-- Head -->
+                                <circle cx="600" cy="120" r="4"/>
+                                <!-- Shoulders -->
+                                <circle cx="550" cy="180" r="4"/>
+                                <circle cx="650" cy="180" r="4"/>
+                                <line x1="550" y1="180" x2="650" y2="180"/>
+                                
+                                <!-- Arms -->
+                                <circle cx="520" cy="240" r="4"/>
+                                <circle cx="680" cy="240" r="4"/>
+                                <line x1="550" y1="180" x2="520" y2="240"/>
+                                <line x1="650" y1="180" x2="680" y2="240"/>
+                                
+                                <!-- Elbows -->
+                                <circle cx="500" cy="300" r="4"/>
+                                <circle cx="700" cy="300" r="4"/>
+                                <line x1="520" y1="240" x2="500" y2="300"/>
+                                <line x1="680" y1="240" x2="700" y2="300"/>
+                                
+                                <!-- Wrists -->
+                                <circle cx="480" cy="360" r="4"/>
+                                <circle cx="720" cy="360" r="4"/>
+                                <line x1="500" y1="300" x2="480" y2="360"/>
+                                <line x1="700" y1="300" x2="720" y2="360"/>
+                                
+                                <!-- Spine -->
+                                <line x1="600" y1="120" x2="600" y2="180"/>
+                                <line x1="600" y1="180" x2="600" y2="320"/>
+                                
+                                <!-- Hips -->
+                                <circle cx="570" cy="320" r="4"/>
+                                <circle cx="630" cy="320" r="4"/>
+                                <line x1="570" y1="320" x2="630" y2="320"/>
+                                
+                                <!-- Knees -->
+                                <circle cx="565" cy="450" r="4"/>
+                                <circle cx="635" cy="450" r="4"/>
+                                <line x1="570" y1="320" x2="565" y2="450"/>
+                                <line x1="630" y1="320" x2="635" y2="450"/>
+                                
+                                <!-- Ankles -->
+                                <circle cx="560" cy="580" r="4"/>
+                                <circle cx="640" cy="580" r="4"/>
+                                <line x1="565" y1="450" x2="560" y2="580"/>
+                                <line x1="635" y1="450" x2="640" y2="580"/>
+                            </g>
+                        </svg>
+
+                        <!-- Posture Analysis Metrics -->
+                        <div class="absolute top-4 right-4 bg-black bg-opacity-70 text-white p-3 rounded-lg text-sm">
+                            <div class="space-y-1">
+                                <div class="flex justify-between items-center">
+                                    <span>Shoulder Alignment:</span>
+                                    <span class="text-green-400">Good</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span>Spine Angle:</span>
+                                    <span class="text-yellow-400" data-bind="posture.spineAngle">15°</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span>Balance Score:</span>
+                                    <span class="text-green-400" data-bind="posture.balanceScore">8.5/10</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Patient Video Controls -->
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center space-x-3 bg-black bg-opacity-50 rounded-full px-4 py-2">
+                            <button class="text-white hover:text-medical-teal transition-colors" data-event="click:togglePatientMute" title="Mute/Unmute Patient">
+                                <i class="fas fa-microphone-slash text-lg"></i>
+                            </button>
+                            <button class="text-white hover:text-medical-teal transition-colors" data-event="click:togglePatientCamera" title="Camera On/Off">
+                                <i class="fas fa-video text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_COMPONENT: PatientVideoFeed -->
+
+                <!-- Exercise Instructions Panel -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-medical-dark mb-4 flex items-center">
+                        <i class="fas fa-clipboard-list text-medical-blue mr-2"></i>
+                        Current Exercise
+                    </h3>
+                    <div class="bg-blue-50 rounded-lg p-4">
+                        <h4 class="font-medium text-medical-dark mb-2" data-bind="exercise.name">Shoulder Blade Squeeze</h4>
+                        <p class="text-gray-700 text-sm mb-3" data-bind="exercise.description">
+                            Sit or stand with your arms at your sides. Squeeze your shoulder blades together, 
+                            hold for 5 seconds, then relax. This helps improve posture and reduce forward head position.
+                        </p>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-600">Sets: <span data-bind="exercise.sets" class="font-medium">3</span></span>
+                            <span class="text-gray-600">Reps: <span data-bind="exercise.reps" class="font-medium">15</span></span>
+                            <span class="text-gray-600">Duration: <span data-bind="exercise.duration" class="font-medium">5 sec hold</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat & Tools Section -->
+            <div class="space-y-6">
+                <!-- @COMPONENT: ChatBox -->
+                <div class="bg-white rounded-xl shadow-lg h-96 flex flex-col">
+                    <div class="bg-gray-50 px-4 py-3 border-b rounded-t-xl">
+                        <h3 class="font-semibold text-medical-dark flex items-center">
+                            <i class="fas fa-comments text-medical-blue mr-2"></i>
+                            Session Chat
+                        </h3>
+                    </div>
+                    
+                    <!-- Chat Messages -->
+                    <div class="flex-1 overflow-y-auto p-4 space-y-4" data-implementation="Socket.io real-time messaging">
+                        <!-- @MAP: messages.map(message => ( -->
+                        <div class="flex items-start space-x-3" data-mock="true">
+                            <div class="bg-medical-blue text-white p-2 rounded-full text-xs">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="bg-gray-100 rounded-lg p-3">
+                                    <p class="text-sm text-gray-800">Hello John! Let's start with some shoulder exercises today. Please make sure your camera shows your upper body clearly.</p>
+                                </div>
+                                <span class="text-xs text-gray-500 mt-1 block">Dr. Unnati • 2 minutes ago</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3 justify-end" data-mock="true">
+                            <div class="flex-1 text-right">
+                                <div class="bg-medical-teal text-white rounded-lg p-3 inline-block">
+                                    <p class="text-sm">Thank you doctor! I can see the posture overlay on my screen. Should I begin with the shoulder blade squeezes?</p>
+                                </div>
+                                <span class="text-xs text-gray-500 mt-1 block">John • 1 minute ago</span>
+                            </div>
+                            <div class="bg-gray-300 text-gray-600 p-2 rounded-full text-xs">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3" data-mock="true">
+                            <div class="bg-medical-blue text-white p-2 rounded-full text-xs">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="bg-gray-100 rounded-lg p-3">
+                                    <p class="text-sm text-gray-800">Perfect! Yes, let's start with those. I can see your posture analysis is working well. Remember to keep your spine straight.</p>
+                                </div>
+                                <span class="text-xs text-gray-500 mt-1 block">Dr. Unnati • Just now</span>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+
+                    <!-- Chat Input -->
+                    <div class="border-t p-4">
+                        <div class="flex space-x-2">
+                            <input type="text" 
+                                   placeholder="Type your message..." 
+                                   class="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-medical-blue focus:border-transparent"
+                                   data-event="keypress:sendMessage" />
+                            <button class="bg-medical-blue hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-200" 
+                                    data-event="click:sendMessage">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_COMPONENT: ChatBox -->
+
+                <!-- Session Tools -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="font-semibold text-medical-dark mb-4 flex items-center">
+                        <i class="fas fa-tools text-medical-blue mr-2"></i>
+                        Session Tools
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <button class="w-full flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors" 
+                                data-event="click:startRecording">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-video text-red-500"></i>
+                                <span class="text-sm font-medium">Record Session</span>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </button>
+
+                        <button class="w-full flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors" 
+                                data-event="click:takeSnapshot">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-camera text-blue-500"></i>
+                                <span class="text-sm font-medium">Capture Posture</span>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </button>
+
+                        <button class="w-full flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors" 
+                                data-event="click:shareExercise">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-share-alt text-green-500"></i>
+                                <span class="text-sm font-medium">Share Exercise</span>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </button>
+
+                        <button class="w-full flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors" 
+                                data-event="click:openNotes">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-sticky-note text-yellow-500"></i>
+                                <span class="text-sm font-medium">Session Notes</span>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Session Summary -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="font-semibold text-medical-dark mb-4 flex items-center">
+                        <i class="fas fa-chart-line text-medical-blue mr-2"></i>
+                        Session Progress
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-600">Exercises Completed</span>
+                                <span class="font-medium" data-bind="progress.exercisesCompleted">3/5</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-medical-teal h-2 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-600">Posture Score</span>
+                                <span class="font-medium text-green-600" data-bind="progress.postureScore">8.2/10</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 82%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-600">Session Goals</span>
+                                <span class="font-medium" data-bind="progress.goalsAchieved">2/3</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 67%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- @END_COMPONENT: MainConsultationInterface -->
+
+    <!-- Mobile-Optimized Session Creation Modal (Hidden by default) -->
+    <!-- @COMPONENT: SessionCreationModal -->
+    <div id="sessionModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" data-implementation="Show on page load or button click">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
+                <div class="text-center mb-6">
+                    <div class="bg-medical-blue text-white p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-video text-2xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-medical-dark mb-2">Start Your Session</h2>
+                    <p class="text-gray-600">Create or join a physiotherapy consultation</p>
+                </div>
+
+                <div class="space-y-4">
+                    <button class="w-full bg-medical-blue hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition-colors duration-200" 
+                            data-event="click:createSession">
+                        <i class="fas fa-plus mr-2"></i>Create New Session
+                    </button>
+                    
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white text-gray-500">or</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <input type="text" 
+                               placeholder="Enter session ID or link..." 
+                               class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-medical-blue focus:border-transparent"
+                               data-event="input:validateSessionId" />
+                        <button class="w-full bg-medical-teal hover:bg-teal-600 text-white py-3 px-4 rounded-lg font-medium transition-colors duration-200" 
+                                data-event="click:joinSession">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Join Session
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                    <div class="flex">
+                        <i class="fas fa-info-circle text-blue-500 mt-0.5 mr-3"></i>
+                        <div class="text-sm text-blue-700">
+                            <p class="font-medium">Before you start:</p>
+                            <ul class="mt-1 list-disc list-inside space-y-1">
+                                <li>Ensure good lighting and stable internet</li>
+                                <li>Position camera to show upper body clearly</li>
+                                <li>Have a quiet, private space ready</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: SessionCreationModal -->
+
+    <script>
+        // TODO: Implement WebRTC signaling and connection management
+        // TODO: Integrate MediaPipe Pose for real-time posture analysis
+        // TODO: Implement Socket.io for real-time chat and session coordination
+        // TODO: Add session recording and snapshot capabilities
+        // TODO: Implement session state management and data binding
+
+        (function() {
+            // Basic UI interactions for demonstration
+            const sessionModal = document.getElementById('sessionModal');
+            
+            // Show modal on page load (for demo purposes)
+            setTimeout(() => {
+                if (sessionModal) {
+                    sessionModal.classList.remove('hidden');
+                }
+            }, 1000);
+
+            // Close modal when clicking outside
+            if (sessionModal) {
+                sessionModal.addEventListener('click', (e) => {
+                    if (e.target === sessionModal) {
+                        sessionModal.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Basic button click handlers for demonstration
+            document.addEventListener('click', (e) => {
+                const target = e.target.closest('[data-event]');
+                if (!target) return;
+
+                const event = target.getAttribute('data-event');
+                console.log(`Event triggered: ${event}`);
+                
+                // Basic UI feedback
+                switch(event) {
+                    case 'click:createSession':
+                        alert('Creating new session... (Demo)');
+                        sessionModal?.classList.add('hidden');
+                        break;
+                    case 'click:joinSession':
+                        alert('Joining session... (Demo)');
+                        sessionModal?.classList.add('hidden');
+                        break;
+                    case 'click:endSession':
+                        if (confirm('Are you sure you want to end this session?')) {
+                            alert('Session ended (Demo)');
+                        }
+                        break;
+                    case 'click:toggleMute':
+                        target.innerHTML = target.innerHTML.includes('fa-microphone"') 
+                            ? '<i class="fas fa-microphone-slash text-lg"></i>' 
+                            : '<i class="fas fa-microphone text-lg"></i>';
+                        break;
+                    case 'click:toggleCamera':
+                        target.innerHTML = target.innerHTML.includes('fa-video"') 
+                            ? '<i class="fas fa-video-slash text-lg"></i>' 
+                            : '<i class="fas fa-video text-lg"></i>';
+                        break;
+                }
+            });
+
+            // Auto-scroll chat to bottom
+            const chatContainer = document.querySelector('[data-implementation*="Socket.io"]');
+            if (chatContainer) {
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+            // Simulate real-time posture updates
+            const postureMetrics = document.querySelectorAll('[data-bind^="posture."]');
+            setInterval(() => {
+                postureMetrics.forEach(metric => {
+                    const binding = metric.getAttribute('data-bind');
+                    if (binding === 'posture.spineAngle') {
+                        const angle = Math.floor(Math.random() * 20) + 10;
+                        metric.textContent = `${angle}°`;
+                        metric.className = angle > 20 ? 'text-red-400' : angle > 15 ? 'text-yellow-400' : 'text-green-400';
+                    } else if (binding === 'posture.balanceScore') {
+                        const score = (Math.random() * 2 + 8).toFixed(1);
+                        metric.textContent = `${score}/10`;
+                    }
+                });
+            }, 3000);
+        })();
+    </script>
+</body>
+</html>

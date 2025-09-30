@@ -1,0 +1,81 @@
+Create a single-page responsive website for a physiotherapist.
+
+Details:
+
+Brand name: YourPhysioBuddy
+
+Doctor’s Name: Dr. Unnati Lodha
+
+Purpose: Informational one-page site with friendly, approachable design. Focus on online physiotherapy consultations with optional home visits in Hinganghat.
+
+Design Style: Modern, clean, and friendly. Use light colors (white background with soft pastel greens and blues). Include simple medical/physiotherapy-themed illustrations or friendly vector graphics instead of generic stock photos.
+
+Sections (in order):
+
+Hero Section:
+
+Headline: “Your Physio Buddy – Online Physiotherapy with Dr. Unnati Lodha”
+
+Subtext: “Get expert physiotherapy care from the comfort of your home. Online consultations available, with home visits in Hinganghat.”
+
+Friendly illustration of a patient doing an online video consultation with a physiotherapist.
+
+Button: “Book Online Session” (scrolls to contact form).
+
+About Section:
+
+Short bio of Dr. Unnati Lodha (placeholder text).
+
+Mention qualifications, experience, and her approach to patient care.
+
+Illustration of a physiotherapist helping a patient stretch.
+
+Services Section:
+
+Highlight 3–4 services (e.g., Online Physiotherapy Consultations, Pain Relief Therapy, Post-Surgery Recovery, Ergonomics & Posture Care).
+
+Small note: “Home visits available in Hinganghat.”
+
+Use simple, colorful icons/illustrations for each service.
+
+Why Choose Us Section:
+
+Bullet points:
+
+Convenient Online Sessions
+
+Personalized Care Plans
+
+Evidence-Based Treatments
+
+Home Visits in Hinganghat
+
+Friendly & Patient-Centered Approach
+
+Contact Section:
+
+Simple contact form with fields: Name, Email, Phone, Message.
+
+Contact details: email, phone number placeholder, and WhatsApp link for quick consultation.
+
+CTA: “Send Message” or “Request Online Session.”
+
+Other Requirements:
+
+Mobile responsive design.
+
+Smooth scrolling navigation.
+
+Friendly rounded fonts.
+
+SEO-friendly structure with headings.
+
+Placeholder text (can be updated later).
+
+👉 This way, the main call-to-action is for online consultations, while home visits in Hinganghat are mentioned clearly but secondary.
+
+Do you want me to now generate a working one-page HTML/CSS site with this design (so you can deploy immediately), or should I leave it just as a prompt for an AI site builder like Framer/WordPress AI?
+
+Is this conversation helpful so far?
+
+ChatGPT can make mistakes. Check important info. See Cookie Preferences.

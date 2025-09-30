@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "physio-prescriptions"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "physio-prescriptions-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

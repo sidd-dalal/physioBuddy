@@ -1,0 +1,28 @@
+{
+  "hosting": [
+    {
+      "target": "main-site",
+      "public": "coming-soon",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        { "source": "**", "destination": "/index.html" }
+      ]
+    },
+    {
+      "target": "prescriptions",
+      "public": "physio-prescriptions-v2/dist",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        { "source": "**", "destination": "/index.html" }
+      ]
+    },
+    {
+      "target": "physioconnect",
+      "public": "PhysioConnect/dist/public",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        { "source": "**", "destination": "/index.html" }
+      ]
+    }
+  ]
+}

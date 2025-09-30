@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YourPhysioBuddy - Coming Soon</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      max-width: 600px;
+    }
+
+    .logo {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .notify {
+      background: rgba(255,255,255,0.15);
+      padding: 10px 20px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .notify input {
+      border: none;
+      outline: none;
+      padding: 10px;
+      border-radius: 20px;
+      flex: 1;
+    }
+
+    .notify button {
+      background: #fff;
+      color: #4facfe;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .notify button:hover {
+      background: #f1f1f1;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">🧑‍⚕️ YourPhysioBuddy</div>
+  <h1>We're Launching Soon!</h1>
+  <p>YourPhysioBuddy will help patients and physiotherapists connect with personalized exercise prescriptions, posture tracking, and more.</p>
+
+
+
+  <footer>
+    &copy; <span id="year"></span> YourPhysioBuddy. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

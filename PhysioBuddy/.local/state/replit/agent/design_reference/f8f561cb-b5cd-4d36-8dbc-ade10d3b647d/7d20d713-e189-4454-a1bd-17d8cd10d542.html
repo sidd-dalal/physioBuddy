@@ -1,0 +1,554 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourPhysioBuddy - Dr. Unnati Lodha | Personalized Physiotherapy Care</title>
+    <meta name="description" content="Your Physio Buddy with Dr. Unnati Lodha - Personalized physiotherapy care helping you move better, recover faster, and live pain-free.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    'inter': ['Inter', 'sans-serif'],
+                },
+                colors: {
+                    'sage': {
+                        50: '#f0fdf4',
+                        100: '#dcfce7',
+                        200: '#bbf7d0',
+                        300: '#86efac',
+                        400: '#4ade80',
+                        500: '#22c55e',
+                        600: '#16a34a',
+                        700: '#15803d',
+                        800: '#166534',
+                        900: '#14532d',
+                    },
+                    'sky-soft': {
+                        50: '#f0f9ff',
+                        100: '#e0f2fe',
+                        200: '#bae6fd',
+                        300: '#7dd3fc',
+                        400: '#38bdf8',
+                        500: '#0ea5e9',
+                        600: '#0284c7',
+                        700: '#0369a1',
+                        800: '#075985',
+                        900: '#0c4a6e',
+                    }
+                }
+            }
+        }
+    };
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0fdf4 0%, #f0f9ff 100%);
+        }
+    </style>
+</head>
+<body class="font-inter text-gray-700 bg-white">
+    
+    <!-- Navigation -->
+    <!-- @COMPONENT: Navigation [sticky header with smooth scroll links] -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-sage-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-heartbeat text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-semibold text-gray-800" data-bind="brandName">YourPhysioBuddy</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hero" class="text-gray-600 hover:text-sage-600 transition-colors duration-200 font-medium">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-sage-600 transition-colors duration-200 font-medium">About</a>
+                    <a href="#services" class="text-gray-600 hover:text-sage-600 transition-colors duration-200 font-medium">Services</a>
+                    <a href="#why-choose" class="text-gray-600 hover:text-sage-600 transition-colors duration-200 font-medium">Why Choose Us</a>
+                    <a href="#contact" class="bg-sage-500 text-white px-4 py-2 rounded-full hover:bg-sage-600 transition-colors duration-200 font-medium">Contact</a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-sage-600 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden hidden border-t border-gray-100 bg-white">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#hero" class="block px-3 py-2 text-gray-600 hover:text-sage-600 transition-colors duration-200 font-medium">Home</a>
+                    <a href="#about" class="block px-3 py-2 text-gray-600 hover:text-sage-600 transition-colors duration-200 font-medium">About</a>
+                    <a href="#services" class="block px-3 py-2 text-gray-600 hover:text-sage-600 transition-colors duration-200 font-medium">Services</a>
+                    <a href="#why-choose" class="block px-3 py-2 text-gray-600 hover:text-sage-600 transition-colors duration-200 font-medium">Why Choose Us</a>
+                    <a href="#contact" class="block px-3 py-2 text-gray-600 hover:text-sage-600 transition-colors duration-200 font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection [main landing area with CTA] -->
+    <section id="hero" class="pt-16 gradient-bg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                        <span data-bind="heroTitle">Your Physio Buddy</span> – 
+                        <span class="text-sage-600">Personalized Care</span> 
+                        with <span data-bind="doctorName">Dr. Unnati Lodha</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed" data-bind="heroSubtext">
+                        Helping you move better, recover faster, and live pain-free with evidence-based physiotherapy treatments tailored just for you.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#contact" data-event="click:scrollToContact" class="bg-sage-500 text-white px-8 py-4 rounded-full hover:bg-sage-600 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fas fa-calendar-plus mr-2"></i>Get in Touch
+                        </a>
+                        <a href="#services" class="border-2 border-sage-500 text-sage-600 px-8 py-4 rounded-full hover:bg-sage-50 transition-all duration-200 font-semibold text-lg">
+                            <i class="fas fa-info-circle mr-2"></i>Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center lg:justify-end">
+                    <!-- Friendly physiotherapy illustration -->
+                    <!-- A warm, professional illustration of a female physiotherapist helping a patient with rehabilitation exercises -->
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Friendly physiotherapist helping patient with exercises" 
+                         class="rounded-2xl shadow-2xl w-full max-w-md lg:max-w-lg h-auto object-cover" 
+                         data-mock-image="true" 
+                         data-implementation="Replace with custom physiotherapy illustration" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- About Section -->
+    <!-- @COMPONENT: AboutSection [doctor bio and credentials] -->
+    <section id="about" class="py-16 lg:py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Meet <span class="text-sage-600" data-bind="doctorName">Dr. Unnati Lodha</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Your dedicated physiotherapy partner committed to helping you achieve optimal health and mobility
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="flex justify-center lg:justify-start">
+                    <!-- Professional portrait of Dr. Unnati Lodha in a friendly, approachable style -->
+                    <!-- A professional headshot of a smiling female doctor in a white coat, warm and approachable -->
+                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600" 
+                         alt="Dr. Unnati Lodha - Physiotherapist" 
+                         class="rounded-2xl shadow-lg w-full max-w-md h-auto object-cover" 
+                         data-mock-image="true" 
+                         data-implementation="Replace with actual doctor photo or avatar illustration" />
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-sage-50 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">About Dr. Unnati</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed" data-mock="true">
+                            Dr. Unnati Lodha brings over 8 years of experience in physiotherapy, specializing in musculoskeletal rehabilitation and sports injury recovery. She completed her Doctor of Physical Therapy from [University Name] and holds certifications in manual therapy and dry needling techniques.
+                        </p>
+                        <p class="text-gray-600 mb-6 leading-relaxed" data-mock="true">
+                            Her patient-centered approach combines evidence-based treatments with personalized care plans, ensuring each patient receives the attention and expertise they deserve for optimal recovery and long-term wellness.
+                        </p>
+                    </div>
+                    
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-sky-soft-50 p-6 rounded-xl text-center">
+                            <div class="w-12 h-12 bg-sky-soft-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-graduation-cap text-white text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900" data-mock="true">DPT Certified</h4>
+                            <p class="text-gray-600 text-sm" data-mock="true">Licensed Professional</p>
+                        </div>
+                        <div class="bg-sage-50 p-6 rounded-xl text-center">
+                            <div class="w-12 h-12 bg-sage-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-award text-white text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900" data-mock="true">8+ Years</h4>
+                            <p class="text-gray-600 text-sm" data-mock="true">Experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutSection -->
+
+    <!-- Services Section -->
+    <!-- @COMPONENT: ServicesSection [core physiotherapy services grid] -->
+    <section id="services" class="py-16 lg:py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Our <span class="text-sage-600">Services</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive physiotherapy treatments designed to get you back to your best self
+                </p>
+            </div>
+            
+            <!-- @MAP: services.map(service => ( -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 bg-sage-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-running text-sage-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-mock="true">Sports Injury Rehab</h3>
+                    <p class="text-gray-600 leading-relaxed" data-mock="true">
+                        Specialized treatment for athletes and active individuals recovering from sports-related injuries and looking to return to peak performance.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 bg-sky-soft-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-user-md text-sky-soft-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-mock="true">Post-Surgery Recovery</h3>
+                    <p class="text-gray-600 leading-relaxed" data-mock="true">
+                        Comprehensive rehabilitation programs to help you recover safely and effectively after orthopedic surgeries and procedures.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-desktop text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-mock="true">Ergonomics & Posture Care</h3>
+                    <p class="text-gray-600 leading-relaxed" data-mock="true">
+                        Address workplace-related issues, improve posture, and prevent repetitive strain injuries through targeted interventions.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hand-holding-heart text-rose-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-mock="true">Pain Relief Therapy</h3>
+                    <p class="text-gray-600 leading-relaxed" data-mock="true">
+                        Evidence-based pain management techniques including manual therapy, dry needling, and therapeutic exercises for lasting relief.
+                    </p>
+                </div>
+            </div>
+            <!-- @END_MAP )) -->
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ServicesSection -->
+
+    <!-- Why Choose Us Section -->
+    <!-- @COMPONENT: WhyChooseSection [value propositions and differentiators] -->
+    <section id="why-choose" class="py-16 lg:py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Why Choose <span class="text-sage-600">YourPhysioBuddy</span>?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Experience the difference with our patient-focused approach to physiotherapy care
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <!-- @MAP: values.map(value => ( -->
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-heart text-sage-600 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2" data-mock="true">Patient-Centered Care</h3>
+                            <p class="text-gray-600 leading-relaxed" data-mock="true">
+                                Every treatment plan is tailored to your unique needs, goals, and lifestyle, ensuring the most effective path to recovery.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-sky-soft-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-microscope text-sky-soft-600 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2" data-mock="true">Evidence-Based Practices</h3>
+                            <p class="text-gray-600 leading-relaxed" data-mock="true">
+                                Our treatments are grounded in the latest research and proven methodologies for optimal outcomes and lasting results.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-clipboard-list text-yellow-600 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2" data-mock="true">Personalized Treatment Plans</h3>
+                            <p class="text-gray-600 leading-relaxed" data-mock="true">
+                                No two patients are alike. We create customized rehabilitation programs that address your specific condition and objectives.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-smile text-rose-600 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2" data-mock="true">Friendly Environment</h3>
+                            <p class="text-gray-600 leading-relaxed" data-mock="true">
+                                Our welcoming clinic atmosphere puts you at ease, making your recovery journey as comfortable as possible.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- @END_MAP )) -->
+                </div>
+                
+                <div class="flex justify-center lg:justify-end">
+                    <!-- A cheerful healthcare environment showing physiotherapy equipment and a welcoming space -->
+                    <img src="https://pixabay.com/get/g03e3fcdbcd4b8b572d4c476a567a4359e540ee9518a4c4071e4251adcf14967b83a1dd5be46dca4c8b9cc82787653037b243f59b2acd51f5c9a7975c6cc6a077_1280.jpg" 
+                         alt="Modern physiotherapy clinic with welcoming environment" 
+                         class="rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg h-auto object-cover" 
+                         data-mock-image="true" 
+                         data-implementation="Replace with actual clinic photos or illustration" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: WhyChooseSection -->
+
+    <!-- Contact Section -->
+    <!-- @COMPONENT: ContactSection [contact form and details] -->
+    <section id="contact" class="py-16 lg:py-24 gradient-bg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Get in <span class="text-sage-600">Touch</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ready to start your journey to better health? Contact us today to schedule your consultation
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Send us a Message</h3>
+                    <form id="contact-form" class="space-y-6" data-implementation="Handle form submission to email or database">
+                        <!-- @STATE: formData:object = {name: '', email: '', phone: '', message: ''} -->
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                <input type="text" id="name" name="name" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500 transition-colors duration-200"
+                                       placeholder="Enter your full name" data-bind="formData.name">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500 transition-colors duration-200"
+                                       placeholder="Enter your phone number" data-bind="formData.phone">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500 transition-colors duration-200"
+                                   placeholder="Enter your email address" data-bind="formData.email">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                            <textarea id="message" name="message" rows="4" required 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500 transition-colors duration-200 resize-none"
+                                      placeholder="Tell us about your condition or questions..." data-bind="formData.message"></textarea>
+                        </div>
+                        <button type="submit" data-event="click:handleSubmit" data-implementation="Should validate form and send email"
+                                class="w-full bg-sage-500 text-white py-4 rounded-lg hover:bg-sage-600 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-envelope text-sage-600 text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Email</h4>
+                                    <p class="text-gray-600" data-mock="true">info@yourphysiobuddy.com</p>
+                                    <p class="text-gray-600" data-mock="true">dr.unnati@yourphysiobuddy.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-sky-soft-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-phone text-sky-soft-600 text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Phone</h4>
+                                    <p class="text-gray-600" data-mock="true">+1 (555) 123-4567</p>
+                                    <p class="text-gray-600 text-sm">Mon-Fri: 8AM-6PM, Sat: 9AM-2PM</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-yellow-600 text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Location</h4>
+                                    <p class="text-gray-600" data-mock="true">123 Health Street, Suite 456</p>
+                                    <p class="text-gray-600" data-mock="true">Wellness City, WC 12345</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Placeholder -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Visit Our Clinic</h3>
+                        <div class="bg-gray-200 rounded-lg h-48 flex items-center justify-center" data-implementation="Integrate Google Maps or similar mapping service">
+                            <div class="text-center text-gray-500">
+                                <i class="fas fa-map text-4xl mb-2"></i>
+                                <p class="font-medium">Interactive Map</p>
+                                <p class="text-sm">Location will be displayed here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- Footer -->
+    <!-- @COMPONENT: Footer [simple footer with copyright] -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-sage-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-heartbeat text-white text-lg"></i>
+                        </div>
+                        <span class="text-xl font-semibold" data-bind="brandName">YourPhysioBuddy</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed" data-mock="true">
+                        Dedicated to helping you move better, recover faster, and live pain-free through personalized physiotherapy care.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-sage-400 transition-colors duration-200">About Dr. Unnati</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-sage-400 transition-colors duration-200">Our Services</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-sage-400 transition-colors duration-200">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-sage-500 transition-colors duration-200" data-implementation="Link to actual social media profiles">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-sage-500 transition-colors duration-200" data-implementation="Link to actual social media profiles">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-sage-500 transition-colors duration-200" data-implementation="Link to actual social media profiles">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400" data-mock="true">
+                    © 2024 YourPhysioBuddy. All rights reserved. | Dr. Unnati Lodha, Licensed Physiotherapist
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        (function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuButton.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+            
+            // Close mobile menu when clicking on links
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileMenuButton.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                });
+            });
+            
+            // Form submission handling
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // TODO: Implement actual form submission logic
+                // This could include form validation, sending data to a backend, etc.
+                
+                // For demo purposes, show a success message
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.innerHTML;
+                submitButton.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+                submitButton.classList.add('bg-green-500', 'hover:bg-green-600');
+                submitButton.classList.remove('bg-sage-500', 'hover:bg-sage-600');
+                
+                setTimeout(() => {
+                    submitButton.innerHTML = originalText;
+                    submitButton.classList.remove('bg-green-500', 'hover:bg-green-600');
+                    submitButton.classList.add('bg-sage-500', 'hover:bg-sage-600');
+                    contactForm.reset();
+                }, 3000);
+            });
+            
+            // Add scroll effect to navigation
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 100) {
+                    nav.classList.add('shadow-lg');
+                } else {
+                    nav.classList.remove('shadow-lg');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

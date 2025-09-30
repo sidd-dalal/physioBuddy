@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "physioprescription-98af8"
+  },
+  "targets": {
+    "physioprescription-98af8": {
+      "hosting": {
+        "main-site": [
+          "yourphysiobuddy.com"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

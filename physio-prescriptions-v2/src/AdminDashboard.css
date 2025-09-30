@@ -1,0 +1,643 @@
+/* AdminDashboard.css */
+
+.container {
+  max-width: 900px;
+  margin: 1.5rem auto;
+  padding: 1rem 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  background: #fefefe;
+}
+* {
+    box-sizing: border-box;
+    font-family: Segoe UI,Arial,Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;
+}
+
+body {
+    font-family: Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+    background: #f4f6f8;
+    color: #333;
+    margin: 0;
+    padding: 0
+}
+h2, h3, h4 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.card {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px #0000001a;
+    margin-bottom: 1.5rem;
+}
+
+.card.small {
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.card.small button {
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 4px;
+  margin-left: 4px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.card.small button:hover {
+  background: #217dbb;
+}
+
+.card.small button.danger {
+  background: #e74c3c;
+}
+
+.card.small button.danger:hover {
+  background: #c0392b;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #34495e;
+}
+
+input, textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1.5px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Overall layout tweaks */
+.admin-dashboard {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f4f7fb;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #2c3e50;
+  color: #ecf0f1;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.2rem;
+  padding-top: 2rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 201;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s;
+}
+
+.sidebar button {
+  background: none;
+  border: none;
+  color: #ecf0f1;
+  font-size: 1.08rem;
+  font-weight: 600;
+  padding: 0.9rem 1rem;
+  margin: 0.2rem 0;
+  text-align: left;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+}
+
+.sidebar button.active,
+.sidebar button:hover,
+.sidebar button:focus {
+  background: #3498db;
+  color: #fff;
+}
+
+.sidebar-close-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  cursor: pointer;
+  z-index: 101;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+.sidebar-toggle-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  margin-right: 18px;
+  color: #3498db;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-hamburger {
+  display: inline-block;
+  width: 28px;
+  height: 3px;
+  background: #3498db;
+  border-radius: 2px;
+  position: relative;
+}
+
+.sidebar-hamburger::before,
+.sidebar-hamburger::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #3498db;
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  transition: 0.3s;
+}
+
+.sidebar-hamburger::before {
+  top: -9px;
+}
+
+.sidebar-hamburger::after {
+  top: 9px;
+}
+
+/* Content area */
+.content {
+  margin-left: 220px;
+  flex-grow: 1;
+  padding: 2rem 2.5rem;
+  overflow-y: auto;
+  height: 100vh;
+  background: #fefefe;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Header Bar */
+.header-bar {
+  position: fixed;
+  top: 0;
+  left: 220px;
+  right: 0;
+  height: 60px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #34495e;
+  z-index: 200; /* Lower than sidebar */
+  border-top-left-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  width: calc(100% - 220px); /* Add this for desktop */
+}
+
+/* Adjust content padding below fixed header */
+.content > *:first-child {
+  margin-top: 70px;
+}
+
+/* Buttons */
+
+button {
+    cursor: pointer;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #0078d4;
+    color: #fff;
+    transition: background-color .25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+}
+.add-exercise-btn,
+form > button[type='button'],
+.form-buttons button {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 3px 6px rgba(52, 152, 219, 0.3);
+}
+
+.add-exercise-btn:hover,
+form > button[type='button']:hover,
+.form-buttons button:hover {
+  background-color: #2980b9;
+  box-shadow: 0 5px 12px rgba(41, 128, 185, 0.5);
+}
+
+.form-buttons button.secondary {
+  background-color: #bdc3c7;
+  color: #34495e;
+  box-shadow: none;
+}
+
+.form-buttons button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Exercise row */
+.exercise-row {
+  display: inline-block !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #ecf0f1;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.exercise-row input {
+  flex: 1 1 150px;
+  min-width: 150px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
+
+
+.exercise-row button {
+  background-color: #e74c3c;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 3px 6px rgba(231, 76, 60, 0.3);
+  transition: background-color 0.3s ease;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exercise-row button:hover {
+  background-color: #c0392b;
+  box-shadow: 0 5px 12px rgba(192, 57, 43, 0.5);
+}
+
+.exercise-row button.small {
+  background-color: #d9534f;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.exercise-row iframe {
+  width: 100%;
+  max-width: 400px;
+  height: 225px;
+  border-radius: 8px;
+  margin-top: 0.75rem;
+  flex-basis: 100%;
+}
+
+/* Suggestions List */
+ul.suggestions-list,
+.suggestions-list {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #fff;
+  border: 1px solid #d0e6f7;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+  z-index: 10;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.suggestions-list li {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.18s;
+  list-style: none !important;
+  margin: 0 !important;
+}
+
+/***** FORCE SUGGESTIONS LIST TO BE UNSTYLED *****/
+.admin-dashboard ul.suggestions-list,
+.admin-dashboard .suggestions-list,
+.admin-dashboard ul.suggestions-list li,
+.admin-dashboard .suggestions-list li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #fff;
+  border: none;
+  box-shadow: none;
+}
+
+/* Muted text */
+.muted {
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+/* Danger button */
+.danger {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.danger:hover {
+  color: #c0392b;
+  text-decoration: underline;
+}
+
+/* Misc */
+.prescriptions-list .card {
+  margin-bottom: 1rem;
+}
+
+.prescription-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prescription-actions button {
+  margin-left: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #3498db;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.prescription-actions button.danger {
+  color: #e74c3c;
+}
+
+h3 + p {
+  margin-top: 0;
+  font-style: italic;
+  color: #555;
+}
+
+/* Admin Login Page Styles */
+.admin-login-bg {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #3498db 0%, #6dd5fa 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.admin-login-card {
+  background: #fff;
+  padding: 2.5rem 2.2rem 2rem 2.2rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 32px rgba(44,62,80,0.13);
+  width: 100%;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.admin-login-logo {
+  margin-bottom: 0.7rem;
+}
+
+.admin-login-card h2 {
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.admin-login-card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-login-card input,
+.admin-login-card label,
+.admin-login-card button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.admin-login-card input {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  border: 1.5px solid #b3c6d6;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.8rem;
+  transition: border-color 0.2s;
+  background: #fff;
+}
+
+.admin-login-card label {
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 0.2rem;
+  margin-top: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.admin-login-card button.admin-login-btn {
+  background: linear-gradient(90deg, #3498db 60%, #6dd5fa 100%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 0;
+  font-size: 1.08rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(52,152,219,0.13);
+  transition: background 0.2s;
+  width: 100%;
+}
+
+/* Responsive sidebar */
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 220px;
+    z-index: 1001;
+    transform: translateX(-100%);
+    box-shadow: 2px 0 8px rgba(0,0,0,0.18);
+    background: #2c3e50;
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    padding-top: 3.5rem;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar-close-btn {
+    display: block;
+  }
+  .header-bar {
+    left: 0 !important;
+    width: 100vw !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .sidebar-toggle-btn {
+    display: flex;
+    margin-right: 16px;
+    background: none;
+    border: none;
+    align-items: center;
+    height: 40px;
+  }
+  .content {
+    margin-left: 0 !important;
+    padding: 1rem 0.5rem !important;
+    margin-top: 70px !important;
+  }
+  .admin-dashboard {
+    flex-direction: column;
+  }
+  .admin-dashboard.sidebar-open {
+    overflow: hidden;
+  }
+  .card {
+    padding: 1rem 0.7rem;
+  }
+}
+
+/* Optional: overlay when sidebar is open */
+@media (max-width: 900px) {
+  .admin-dashboard.sidebar-open::after {
+    content: '';
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(44,62,80,0.18);
+    pointer-events: auto;
+  }
+}
+
+.sidebar .sidebar-close-btn + button {
+  margin-top: 1.5rem;
+  border-top: 1px solid #34495e;
+  padding-top: 1.2rem;
+}}
+
+/* Exercise notes styling in admin dashboard */
+.exercise-row textarea {
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.4;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exercise-row textarea:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+}
+
+.exercise-notes-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* Responsive improvements for exercise cards */
+@media (max-width: 768px) {
+  .exercise-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .exercise-row input {
+    flex: none;
+    margin-bottom: 8px;
+  }
+
+  .exercise-row iframe {
+    width: 100%;
+    max-width: none;
+    height: 200px;
+  }
+}
+
+/* Better visual separation for exercise cards */
+.exercise-row {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.exercise-row:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
