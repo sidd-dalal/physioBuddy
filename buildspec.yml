@@ -1,7 +1,7 @@
 version: 0.2
 env:
   secrets-manager:
-    FIREBASE_SERVICE_ACCOUNT: "arn:aws:secretsmanager:us-east-1:346518713419:secret:firebaseServiceAccount-key-xvHPza"
+    FIREBASE_SERVICE_ACCOUNT: "arn:aws:secretsmanager:us-east-1:346518713419:secret:fire-name-eVkQBl::"
 phases:
   install:
     runtime-versions:
