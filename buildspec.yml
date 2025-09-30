@@ -10,19 +10,16 @@ phases:
       nodejs: 20
     commands:
       - echo "== Install phase =="
-      - apt-get update
-      - apt-get install -y nodejs google-cloud-sdk
       - npm install -g firebase-tools
+      # Save service account JSON to a file
       - echo "$FIREBASE_SERVICE_ACCOUNT" > /root/firebase-key.json
       - export GOOGLE_APPLICATION_CREDENTIALS=/root/firebase-key.json
       - export PROJECT_ID=physioprescription-98af8
-      - cat /root/firebase-key.json | head -n 5
+      - echo "GOOGLE_APPLICATION_CREDENTIALS set to $GOOGLE_APPLICATION_CREDENTIALS"
 
   pre_build:
     commands:
       - echo "== Pre-build phase =="
-      - gcloud auth activate-service-account --key-file=/root/firebase-key.json
-      - gcloud config set project $PROJECT_ID
       - cd physio-prescriptions-v2
       - npm install
 
@@ -33,7 +30,6 @@ phases:
 
   post_build:
     commands:
-      - echo "== Post-build phase =="
-      - cd ..
-      - firebase deploy --only hosting --project $PROJECT_ID --non-interactive
-      - echo "Build finished. Firebase key available at $GOOGLE_APPLICATION_CREDENTIALS"
+      - echo "== Deploying to Firebase Hosting =="
+      - npx firebase deploy --only hosting --project $PROJECT_ID --non-interactive
+      - echo "Build finished."
