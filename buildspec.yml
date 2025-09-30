@@ -1,13 +1,16 @@
 version: 0.2
 env:
   secrets-manager:
-    FIREBASE_TOKEN: "arn:aws:secretsmanager:us-east-2:346518713419:secret:firebase-token-NYWaOo"
+    FIREBASE_TOKEN: "arn:aws:secretsmanager:us-east-1:346518713419:secret:firebaseServiceAccount-key-xvHPza"
 phases:
   install:
     commands:
-      - curl -sL https://deb.nodesource.com/setup_16.x | bash -
+      - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
       - apt-get install -y nodejs
       - npm install -g firebase-tools
+      # Save your secret as a JSON file that Firebase CLI expects:
+      - echo $FIREBASE_SERVICE_ACCOUNT > /root/serviceAccount.json
+      - export GOOGLE_APPLICATION_CREDENTIALS=/root/serviceAccount.json
   pre_build:
     commands:
       - cd physio-prescriptions-v2
@@ -18,4 +21,4 @@ phases:
   post_build:
     commands:
       - cd ..
-      - firebase deploy --only hosting --token "$FIREBASE_TOKEN"
+      - firebase deploy --only hosting
