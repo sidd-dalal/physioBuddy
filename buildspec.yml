@@ -15,16 +15,16 @@ phases:
 
   pre_build:
     commands:
-      - echo "== Pre-build phase =="
-      - echo "$FIREBASE_SERVICE_ACCOUNT" > /root/firebase-key.json
-      - export GOOGLE_APPLICATION_CREDENTIALS=/root/firebase-key.json
-      - export PROJECT_ID=physioprescription-98af8
-      - curl -sSL https://sdk.cloud.google.com | bash
-      - export PATH=$PATH:/root/google-cloud-sdk/bin
-      - gcloud auth activate-service-account --key-file=/root/firebase-key.json
-      - gcloud config set project $PROJECT_ID
-      - cd physio-prescriptions-v2
-      - npm install
+    - echo "== Pre-build phase =="
+    - echo "$FIREBASE_SERVICE_ACCOUNT" | jq -r . > /root/firebase-key.json
+    - export GOOGLE_APPLICATION_CREDENTIALS=/root/firebase-key.json
+    - export PROJECT_ID=physioprescription-98af8
+    - curl -sSL https://sdk.cloud.google.com | bash
+    - export PATH=$PATH:/root/google-cloud-sdk/bin
+    - gcloud auth activate-service-account --key-file=/root/firebase-key.json
+    - gcloud config set project $PROJECT_ID
+    - cd physio-prescriptions-v2
+    - npm install
 
   build:
     commands:
