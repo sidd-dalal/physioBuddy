@@ -9,16 +9,8 @@ phases:
     runtime-versions:
       nodejs: 20
     commands:
-      - echo "STEP 1: Installing"
-      - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-      - apt-get install -y nodejs
-      - npm install -g firebase-tools
-      - "echo \"$FIREBASE_SERVICE_ACCOUNT\" > /root/serviceAccount.json"
-      - export GOOGLE_APPLICATION_CREDENTIALS=/root/serviceAccount.json
-      - echo "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS"
-      - cat /root/serviceAccount.json
-
+      - echo "STEP 1: Install phase"
+      - echo "Secret length: ${#FIREBASE_SERVICE_ACCOUNT}"
   build:
     commands:
-      - echo "STEP 2: Building"
-      - npm run build
+      - echo "STEP 2: Build phase"
