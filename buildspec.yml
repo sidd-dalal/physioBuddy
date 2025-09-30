@@ -36,6 +36,6 @@ phases:
       - echo "== Deploying to Firebase Hosting =="
       - export GOOGLE_APPLICATION_CREDENTIALS=/root/firebase-key.json
       - export PROJECT_ID=physioprescription-98af8
-      - echo "GOOGLE_APPLICATION_CREDENTIALS: $GOOGLE_APPLICATION_CREDENTIALS"
+      - echo "GOOGLE_APPLICATION_CREDENTIALS:$GOOGLE_APPLICATION_CREDENTIALS"
       - cd ..
       - firebase deploy --only hosting --project $PROJECT_ID --non-interactive
