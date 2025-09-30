@@ -730,7 +730,7 @@ export default function AdminDashboard() {
         {/* Saved Prescriptions */}
         {activeTab === 'saved' && (
           <>
-            <h2>Saved Prescriptions</h2>
+            <h2>Saved Prescriptions!</h2>
             {loading ? (
               <p>Loading prescriptions...</p>
             ) : prescriptions.length === 0 ? (
